@@ -31,15 +31,15 @@
       <div class="space"></div>
 
       <div id="introduction" class="section scrollspy">
-        <div class="container">
+        <div class="container" id="overlay">
           <div class="row">
             <div class="col-xs-12 articles">
 
               {{#each doc}}
 
-                <p id="article-content"><a href="{{this.link}}"><h3>{{this.title}}</h3></a></p>
+                <p id="article-content"><a href="{{this.link}}"><h4>{{this.title}}</h4></a></p>
 
-                <h5 id="article-content">{{this.article}}</h5>
+                <h6 id="article-content">{{this.article}}</h6>
 
               <img src="{{this.image}}">
               <hr> {{/each}}
