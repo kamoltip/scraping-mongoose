@@ -30,7 +30,7 @@ app.use(express.static('public'));
 
 // Database configuration with mongoose
 mongoose.Promise = global.Promise;
-mongoose.connect('//mongodb://heroku_qmdkjhkk:gf8u5k3ekn91l6m1etmtrjh32e@ds133084.mlab.com:33084/heroku_qmdkjhkk');
+mongoose.connect('mongodb://heroku_qmdkjhkk:gf8u5k3ekn91l6m1etmtrjh32e@ds133084.mlab.com:33084/heroku_qmdkjhkk');
 //heroku: //mongodb://heroku_qmdkjhkk:gf8u5k3ekn91l6m1etmtrjh32e@ds133084.mlab.com:33084/heroku_qmdkjhkk
 //mongodb://localhost/news
 var db = mongoose.connection;
