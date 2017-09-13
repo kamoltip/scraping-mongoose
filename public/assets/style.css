@@ -8,7 +8,7 @@ a{
 }
 body {
     box-sizing: border-box;
-    background-color: #cccccc;
+    background-color: rgb(183, 184, 188);
 }
 .head{
   display: flex;
@@ -70,6 +70,12 @@ a.arrow{
 }
 .space{
   margin-top: 20%;
+}
+#newsPic{
+  margin-top: 22%;
+  width: 95%;
+  border-radius: 10px;
+  box-shadow: 3px 3px 20px grey;
 }
 
 /*.container{

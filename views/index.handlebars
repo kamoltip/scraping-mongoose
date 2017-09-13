@@ -35,14 +35,21 @@
           <div class="row">
             <div class="col-xs-12 articles">
 
-              {{#each doc}}
+            {{#each doc}}
+                <div class="row">
+                  <div class="col s3">
+                    <img src="{{this.image}}" id="newsPic">
+                  </div>
 
-                <p id="article-content"><a href="{{this.link}}"><h4>{{this.title}}</h4></a></p>
+                <div class="col s9">
+                  <p id="article-content"><a href="{{this.link}}"><h5>{{this.title}}</h5></a></p>
 
-                <h6 id="article-content">{{this.article}}</h6>
+                  <h6 id="article-content">{{this.article}}</h6> <br/>
+                </div>
 
-              <img src="{{this.image}}">
-              <hr> {{/each}}
+          <div class="divider"></div> <br/><br/>
+          </div>
+          {{/each}}
               </div>
 
             </div>
