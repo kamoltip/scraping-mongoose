@@ -1,0 +1,50 @@
+
+      <div class="col s12">
+        <img src="../images/readNews.jpg" alt="readNews" class="img">
+      </div>
+
+      <div class="container">
+        <div class="row head">
+
+        <div class="col s7 left">
+          <h1>SCRAPE NEW YORK TIMES</h1>
+        </div>
+
+            <div class="col s5 right">
+
+                <a href="/scrape">
+                  <button id="buttons" id="scrape" type="button" class="btn blue waves-effect waves-dark btn-success">Scrape Articles</button>
+                </a>
+
+                <a href="/delete">
+                  <button id="buttons" type="button" class="btn waves-effect waves-dark blue">Delete Articles</button></a>
+
+                <a href="/api">
+                  <button id="buttons" type="button" class="btn blue waves-effect waves-dark btn-info">API Details</button>
+                </a>
+            </div>
+
+      </div>
+          <a href="#introduction" class="arrow"><i class="large material-icons">keyboard_arrow_down</i></a>
+      </div>
+
+      <div class="space"></div>
+
+      <div id="introduction" class="section scrollspy">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 articles">
+
+              {{#each doc}}
+
+                <p id="article-content"><a href="{{this.link}}"><h3>{{this.title}}</h3></a></p>
+
+                <h5 id="article-content">{{this.article}}</h5>
+
+              <img src="{{this.image}}">
+              <hr> {{/each}}
+              </div>
+
+            </div>
+          </div>
+        </div>

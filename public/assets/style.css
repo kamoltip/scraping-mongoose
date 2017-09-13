@@ -1,0 +1,79 @@
+
+a :hover{
+  color: black;
+}
+a{
+  display: flex;
+  flex-flow: wrap;
+}
+body {
+    box-sizing: border-box;
+    background-color: #cccccc;
+}
+.head{
+  display: flex;
+  justify-content: center;
+}
+.img{
+  background-size: cover;
+  position:absolute;
+  width: 100%;
+  top:0;
+}
+#buttons{
+  position: relative;
+  margin-top: 3%;
+  padding-left: 10%;
+}
+
+h1{
+  position: relative;
+  color: white;
+  margin-top: 43%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 10;
+  line-height: 1em;
+  font-size: 5em;
+  text-shadow: 2px 5px 20px black;
+}
+#overlay{
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background-color:#fff;
+    opacity:0.8;
+    z-index:1001;
+}
+
+.right{
+  /*width: 100%;*/
+  opacity: 0.8;
+  margin-top: 24%;
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+}
+div.col.s7.left{
+  margin-left: 10%;
+}
+a.arrow{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 2px 3px 20px white;
+}
+.space{
+  margin-top: 20%;
+}
+
+/*.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}*/
