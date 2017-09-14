@@ -4,17 +4,17 @@ var ArticleSchema = new Schema({
 
     title: {
         type: String,
-        require: true
+        required: true
     },
 
     article: {
         type: String,
-        require:true
+        required:true
     },
 
     link: {
         type: String,
-        require: true
+        required: true
     },
     image: {
         type: String

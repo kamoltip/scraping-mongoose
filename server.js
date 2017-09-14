@@ -30,7 +30,7 @@ app.use(express.static('public'));
 
 // Database configuration with mongoose
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://heroku_qmdkjhkk:gf8u5k3ekn91l6m1etmtrjh32e@ds133084.mlab.com:33084/heroku_qmdkjhkk');
+mongoose.connect('mongodb://localhost/news');
 //heroku: //mongodb://heroku_qmdkjhkk:gf8u5k3ekn91l6m1etmtrjh32e@ds133084.mlab.com:33084/heroku_qmdkjhkk
 //mongodb://localhost/news
 var db = mongoose.connection;
@@ -67,8 +67,6 @@ app.get("/", function (req, res) {
 });
 
 app.get('/scrape', function (err, res) {
-
-
   request("http://www.nytimes.com/pages/todayspaper/index.html?action=Click&module=HPMiniNav&region=TopBar&WT.nav=page&contentCollection=TodaysPaper&pgtype=Homepage",
   function (error, response, html) {
 
@@ -95,6 +93,7 @@ app.get('/scrape', function (err, res) {
           else {
 
             console.log(doc);
+            console.log('this is the prevent duplicated');
         }
       });
     });
