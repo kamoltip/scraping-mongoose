@@ -89,12 +89,6 @@ a.arrow{
 .divider{
   position: relative;
 }
-.nyt{
-  position: relative;
-  width: 20%;
-  height: auto;
-  top: -10;
-}
 /*.container{
   display: flex;
   align-items: center;
