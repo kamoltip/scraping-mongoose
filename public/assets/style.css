@@ -1,36 +1,39 @@
-
-a :hover{
+a :hover {
   color: black;
 }
-a{
+
+a {
   display: flex;
   flex-flow: wrap;
 }
-body {
-    box-sizing: border-box;
-    background-color: rgb(183, 184, 188);
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT65_3sH-ky5me69Mne2QsNJfkVKmwil5tPniK0TSh2LB933R6Srw');
-    background-size: 8%;
-    position: relative;
 
+body {
+  box-sizing: border-box;
+  background-color: rgb(183, 184, 188);
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT65_3sH-ky5me69Mne2QsNJfkVKmwil5tPniK0TSh2LB933R6Srw');
+  background-size: 8%;
+  position: relative;
 }
-.head{
+
+.head {
   display: flex;
   justify-content: center;
 }
-.img{
+
+.img {
   background-size: cover;
-  position:absolute;
+  position: absolute;
   width: 100%;
-  top:0;
+  top: 0;
 }
-#buttons{
+
+#buttons {
   position: relative;
   margin-top: 3%;
   padding-left: 10%;
 }
 
-h1{
+h1 {
   position: relative;
   color: white;
   margin-top: 43%;
@@ -42,19 +45,20 @@ h1{
   font-size: 5em;
   text-shadow: 2px 5px 20px black;
 }
-#overlay{
-    position: relative;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    background-color:#fff;
-    opacity:1;
-    box-shadow: 2px 3px 20px black;
-    padding: 10%;
+
+#overlay {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  opacity: 1;
+  box-shadow: 2px 3px 20px black;
+  padding: 8%;
 }
 
-.right{
+.right {
   /*width: 100%;*/
   opacity: 0.8;
   margin-top: 24%;
@@ -62,33 +66,51 @@ h1{
   flex-direction: column;
   line-height: normal;
 }
-div.col.s7.left{
+
+div.col.s7.left {
   margin-left: 10%;
 }
-a.arrow{
+
+a.arrow {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   text-shadow: 2px 3px 20px white;
 }
-.space{
+
+.space {
   margin-top: 20%;
 }
-#newsPic{
+
+#newsPic {
   margin-top: 22%;
   width: 95%;
   border-radius: 10px;
   box-shadow: 3px 3px 20px grey;
 }
+
 #notes {
   float: right;
   width: 30%;
   position: relative;
 }
-.divider{
+
+.divider {
   position: relative;
 }
+
+li {
+  list-style: none;
+}
+
+a.modal-trigger {
+  color: rgb(99, 226, 159);
+  float: left;
+  padding: 2%;
+}
+
+
 /*.container{
   display: flex;
   align-items: center;
