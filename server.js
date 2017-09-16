@@ -88,28 +88,30 @@ app.get('/scrape', function (err, res) {
           entry.save(function (err, doc) {
           if (err) {
             console.log(err);
+
         }
      // Or log the doc
           else {
 
             console.log(doc);
-            console.log('this is the prevent duplicated');
+
         }
       });
     });
+    res.redirect("/");
   });
 
 
-  Article.find({}, function (err, doc) {
-    // log any errors
-    if (err) {
-      console.log(err);
-    }
-    // once scrape button is pressed, redirect to main page
-    else {
-      res.redirect("/");
-    }
-  });
+  // Article.find({}, function (err, doc) {
+  //   // log any errors
+  //   if (err) {
+  //     console.log(err);
+  //   }
+  //   // once scrape button is pressed, redirect to main page
+  //   else {
+  //     res.redirect("/");
+  //   }
+  // });
 });
 
 app.get('/api', function (req, res) {
