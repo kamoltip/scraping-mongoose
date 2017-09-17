@@ -48,7 +48,7 @@ db.once('open', function () {
 });
 // route
 // =====
-var Note = require('./models/Note');
+var Comment = require('./models/Comment');
 var Article = require('./models/Article');
 var todaysPaper = "http://www.nytimes.com/pages/todayspaper/index.html?action=Click&module=HPMiniNav&region=TopBar&WT.nav=page&contentCollection=TodaysPaper&pgtype=Homepage";
 
@@ -116,14 +116,18 @@ app.get('/scrape', function (err, res) {
 
 app.get('/api', function (req, res) {
   // grab every doc in the Articles array
-  Article.find({}, function (err, doc) {
+  Article.find({}).populate('comments').exec(function (err, doc) {
+
+
     // log any errors
     if (err) {
       console.log(err);
     }
     // or send the doc to the browser as a json object
     else {
+
       res.json(doc);
+
     }
   });
 });
@@ -141,6 +145,102 @@ app.get('/delete', function (req, res) {
     }
   });
 });
+
+app.get('/', function (req, res){
+
+  // Query MongoDB for all article entries (sort newest to top, assuming Ids increment)
+  Article.find().sort({_id: -1})
+
+    // But also populate all of the comments associated with the articles.
+    .populate('comments')
+
+    // Then, send them to the handlebars template to be rendered
+    .exec(function(err, doc){
+      // log any errors
+      if (err){
+        console.log(err);
+      }
+      // or send the doc to the browser as a json object
+      else {
+        var hbsObject = {articles: doc}
+        res.render('index', hbsObject);
+        res.redirect("/");
+        // res.json(hbsObject)
+      }
+    });
+
+});
+
+// Add a Comment Route - **API**
+app.post('/add/comment/:id', function (req, res){
+
+  // Collect article id
+  var articleId = req.params.id;
+
+  // Collect Author Name
+  var commentAuthor = req.body.name;
+
+  var test = req.body
+  console.log(test)
+  // Collect Comment Content
+  var commentContent = req.body.comment;
+  console.log(commentContent);
+  // "result" object has the exact same key-value pairs of the "Comment" model
+  var result = {
+    author: commentAuthor,
+    content: commentContent
+  };
+
+  // Using the Comment model, create a new comment entry
+  var entry = new Comment (result);
+
+  // Save the entry to the database
+  entry.save(function(err, doc) {
+    // log any errors
+    if (err) {
+      console.log(err);
+    }
+    // Or, relate the comment to the article
+    else {
+      // Push the new Comment to the list of comments in the article
+      Article.findOneAndUpdate({'_id': articleId}, {$push: {'comments':doc._id}}, {new: true})
+      // execute the above query
+      .exec(function(err, doc){
+        // log any errors
+        if (err){
+          console.log(err);
+        } else {
+          // Send Success Header
+          // res.sendStatus(200);
+          res.redirect("/");
+        }
+      });
+    }
+  });
+
+});
+
+// Delete a Comment Route
+app.post('/remove/comment/:id', function (req, res){
+
+  // Collect comment id
+  var commentId = req.params.id;
+
+  // Find and Delete the Comment using the Id
+  Comment.findByIdAndRemove(commentId, function (err, todo) {
+
+    if (err) {
+      console.log(err);
+    }
+    else {
+      // Send Success Header
+      res.sendStatus(200);
+    }
+
+  });
+    res.redirect("/");
+});
+
 
 app.listen(PORT, function () {
   console.log('IM LISTENING IS PORT ' + PORT);

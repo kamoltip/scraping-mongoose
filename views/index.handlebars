@@ -48,15 +48,15 @@
               <h6 id="article-content">{{this.article}}</h6> <br/>
 
               <li>
-                <a class="modal-trigger" href="#modal1"><i class="material-icons">comment</i>Add Comment</a>
-                <a class="modal-trigger" href="#modal2"><i class ="material-icons">thumbs_up_down</i>View Comments</a>
+                <a class="modal-trigger" data-id="{{this._id}}" href="#modal1-{{this._id}}"><i class="material-icons">comment</i>Add Comment</a>
+                <a class="modal-trigger" href="#modal2-{{this._id}}"><i class ="material-icons">thumbs_up_down</i>View Comments</a>
                 <br>
                 <div class="divider"></div>
 
-                <div id="modal1" class="modal">
+                <div id="modal1-{{this._id}}" class="modal">
                   <div class="modal-content">
 
-                    <form id="form-add-{{_id}}" action="add/comment/{{_id}}" method="post">
+                    <form id="form-add-{{this._id}}" action="add/comment/{{this._id}}" method="post">
 
                       <!-- Author Name Input -->
                       <div class="row">
@@ -80,7 +80,7 @@
                       <div class="row">
                         <div class="input-field col s2"></div>
                         <div class="input-field col s8">
-                          <center><input class="btn blue add-comment-button" data-id="{{_id}}" type="submit" value="Submit"></center>
+                          <center><input class="btn blue add-comment-button" data-id="{{this._id}}" type="submit" value="Submit"></center>
                         </div>
                       </div>
 
@@ -90,31 +90,31 @@
               </li>
 
 
-              <!-- View Comments Drop Down -->
+              <!-- View Comments Modal -->
               <li>
 
-                <div id="modal2" class="modal">
+                <div id="modal2-{{this._id}}" class="modal">
                   <div class="modal-content">
 
                     {{!-- Check if the article has comments --}}
-                    {{#if comments}}
+                    {{#if this.comments}}
 
                       {{!-- Article has comments so iterate over them  --}}
                       <ul class="collection">
-                        {{#each comments}}
+                        {{#each this.comments}}
 
                           <li class="collection-item">
 
                             {{!-- Add Author Name --}}
-                            <b>{{author}}</b>{{!-- Add a Delete Button --}}
+                            <b>{{this.author}}</b>{{!-- Add a Delete Button --}}
                             <span class="badge">
-                       <form id="form-delete-{{_id}}" action="remove/comment/{{_id}}" method="post">
-                         <input class="btn-small delete-comment-button" data-id="{{_id}}" type="submit" value="Delete" style="color: white; background-color: red; border-color: red;">
+                       <form id="form-delete-{{this._id}}" action="remove/comment/{{this._id}}" method="post">
+                         <input class="btn-small delete-comment-button" data-id="{{this._id}}" type="submit" value="Delete" style="color: black; border: none;">
                        </form>
                      </span>
 
                             <br>{{!-- Add the Content of the Comment --}}
-                            {{content}}
+                            {{this.content}}
 
                           </li>
                         {{/each}}
@@ -122,7 +122,7 @@
 
                       {{!-- No comments, so display message --}}
                     {{else}}
-                      <p>Post Your First Comment !</p>
+                      <p>Be The First Comment.</p>
                     {{/if}}
 
 
@@ -131,7 +131,7 @@
 
               </ul>
               </div>
-              <div id="notes">{{this.note}}</div>
+              <!-- <div id="notes">{{this.note}}</div> -->
 
               </div>
         {{/each}}
