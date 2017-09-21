@@ -142,19 +142,29 @@ app.post('/add/comment/:id', function (req, res){
 });
 
 // Delete a Comment Route
-// app.post('/remove/comment/:id', function (req, res){
+app.get('/remove/comment/:id', function (req, res){
 
-//   // Collect comment id
-//   var commentId = req.body.comment;
 
-//   // Find and Delete the Comment using the Id
-//   Comment.findByIdAndRemove(commentId, (err, comments) => {
+  // Collect Author Name
+  // var commentAuthor = req.body.name;
 
-//     response = {
-//       message: "Comment successfully deleted",
-//       id: comment._id
-//     }
-//       res.redirect("/");
-//     })
-// });
+  // // Collect Comment Content
+  // var commentContent = req.body.comment;
+  // Article.findByIdAndRemove({'_id': commentAuthor}), {$pull: {'comments':_id}}
+  //   .exec(function(err, doc){
+
+  //       if (err){
+  //         console.log(err);
+  //       } else {
+  //         console.log('deleted');
+  //         // Send Success Header
+  //         // res.sendStatus(200);
+          
+  //       }
+        
+  //   });
+    res.redirect("/");
+});
+
 };
+   

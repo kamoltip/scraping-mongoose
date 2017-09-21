@@ -108,7 +108,7 @@
                             {{!-- Add Author Name --}}
                             <p>Author : {{this.author}}</p>{{!-- Add a Delete Button --}}
                             <span class="badge">
-                       <form id="form-delete-{{this._id}}" action="remove/comment/{{this._id}}" method="post">
+                       <form id="form-delete-{{this._id}}" action="remove/comment/{{this._id}}" method="get">
                          <input class="btn-small delete-comment-button" data-id="{{this._id}}" type="submit" value="Delete" style="color: black; border: none;">
                        </form>
                      </span>
