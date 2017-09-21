@@ -106,15 +106,15 @@
                           <li class="collection-item">
 
                             {{!-- Add Author Name --}}
-                            <p>{{this.author}}</p>{{!-- Add a Delete Button --}}
+                            <p>Author : {{this.author}}</p>{{!-- Add a Delete Button --}}
                             <span class="badge">
                        <form id="form-delete-{{this._id}}" action="remove/comment/{{this._id}}" method="post">
-                         <input class="btn-small delete-comment-button" data-id="{{this._id}}" type="submit" value="Delete" style="color: black; border: none; padding:5%;">
+                         <input class="btn-small delete-comment-button" data-id="{{this._id}}" type="submit" value="Delete" style="color: black; border: none;">
                        </form>
                      </span>
 
                             <br>{{!-- Add the Content of the Comment --}}
-                            {{this.content}}
+                            <p>Comment : {{this.content}}</p>
 
                           </li>
                         {{/each}}
