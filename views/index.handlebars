@@ -80,7 +80,7 @@
                       <div class="row">
                         <div class="input-field col s2"></div>
                         <div class="input-field col s8">
-                          <center><input class="btn blue add-comment-button" data-id="{{this._id}}" type="submit" value="Submit"></center>
+                          <center><input class="btn blue add-comment-button" data-id="{{this._id}}" type="submit" value="Submit" id="addCommentButton"></center>
                         </div>
                       </div>
 
@@ -106,10 +106,10 @@
                           <li class="collection-item">
 
                             {{!-- Add Author Name --}}
-                            <b>{{this.author}}</b>{{!-- Add a Delete Button --}}
+                            <p>{{this.author}}</p>{{!-- Add a Delete Button --}}
                             <span class="badge">
                        <form id="form-delete-{{this._id}}" action="remove/comment/{{this._id}}" method="post">
-                         <input class="btn-small delete-comment-button" data-id="{{this._id}}" type="submit" value="Delete" style="color: black; border: none;">
+                         <input class="btn-small delete-comment-button" data-id="{{this._id}}" type="submit" value="Delete" style="color: black; border: none; padding:5%;">
                        </form>
                      </span>
 
@@ -131,7 +131,7 @@
 
               </ul>
               </div>
-              <!-- <div id="notes">{{this.note}}</div> -->
+              {{!-- <div id="notes">{{this.content}}</div> --}}
 
               </div>
         {{/each}}

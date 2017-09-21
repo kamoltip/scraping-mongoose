@@ -58,7 +58,7 @@ app.get("/", function (req, res) {
 
   var articles = Article.find({}, function (err, doc) {
 
-    console.log(doc);
+    console.log(doc[0].comments);
     res.render('index', {
       doc: doc
     });
@@ -93,25 +93,13 @@ app.get('/scrape', function (err, res) {
      // Or log the doc
           else {
 
-            console.log(doc);
+            // console.log(doc[0]);
 
         }
       });
     });
     res.redirect("/");
   });
-
-
-  // Article.find({}, function (err, doc) {
-  //   // log any errors
-  //   if (err) {
-  //     console.log(err);
-  //   }
-  //   // once scrape button is pressed, redirect to main page
-  //   else {
-  //     res.redirect("/");
-  //   }
-  // });
 });
 
 app.get('/api', function (req, res) {
@@ -162,6 +150,7 @@ app.get('/', function (req, res){
       }
       // or send the doc to the browser as a json object
       else {
+        console.log('doc:---------->', doc[0]);
         var hbsObject = {articles: doc}
         res.render('index', hbsObject);
         res.redirect("/");
@@ -184,7 +173,7 @@ app.post('/add/comment/:id', function (req, res){
   console.log(test)
   // Collect Comment Content
   var commentContent = req.body.comment;
-  console.log(commentContent);
+  console.log("commentContent:=============",commentContent);
   // "result" object has the exact same key-value pairs of the "Comment" model
   var result = {
     author: commentAuthor,
@@ -193,7 +182,7 @@ app.post('/add/comment/:id', function (req, res){
 
   // Using the Comment model, create a new comment entry
   var entry = new Comment (result);
-
+  console.log('entry==========================', entry);
   // Save the entry to the database
   entry.save(function(err, doc) {
     // log any errors
@@ -201,15 +190,17 @@ app.post('/add/comment/:id', function (req, res){
       console.log(err);
     }
     // Or, relate the comment to the article
-    else {
+    else { 
+      console.log('doc==========================:', doc);
       // Push the new Comment to the list of comments in the article
-      Article.findOneAndUpdate({'_id': articleId}, {$push: {'comments':doc._id}}, {new: true})
+      Article.findOneAndUpdate({'_id': articleId}, {$push: {'comments':entry}}, {new: true})
       // execute the above query
       .exec(function(err, doc){
         // log any errors
         if (err){
           console.log(err);
         } else {
+          console.log('inside the else');
           // Send Success Header
           // res.sendStatus(200);
           res.redirect("/");
@@ -243,5 +234,5 @@ app.post('/remove/comment/:id', function (req, res){
 
 
 app.listen(PORT, function () {
-  console.log('IM LISTENING IS PORT ' + PORT);
+  console.log('IM LISTENING TO PORT ' + PORT);
 })
